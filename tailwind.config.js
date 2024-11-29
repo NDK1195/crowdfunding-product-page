@@ -11,6 +11,8 @@ export default {
       backgroundImage: {
         "hero-desktop": "url('./src/images/image-hero-desktop.jpg')",
         "hero-mobile": "url('./src/images/image-hero-mobile.jpg')",
+        "overlay-menu-mobile":
+          "linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.00) 100%)",
       },
     },
   },
