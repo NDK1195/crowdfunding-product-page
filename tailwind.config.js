@@ -15,6 +15,9 @@ export default {
           "linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.00) 100%)",
       },
     },
+    variants: {
+      fill: ["hover", "focus"],
+    },
   },
   plugins: [],
 };
