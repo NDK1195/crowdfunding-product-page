@@ -6,6 +6,7 @@ import { useState } from "react";
 
 function App() {
   const [isHoverBookmark, setIsHoverBookmark] = useState(false);
+  const [isBookmarked, setIsBookmarked] = useState(false);
   return (
     <div className="min-h-dvh bg-[#fafafa]">
       {/* hero */}
@@ -32,22 +33,28 @@ function App() {
               Back this project
             </Button>
             <div
-              className="relative cursor-pointer lg:w-[174px]"
+              className={`relative cursor-pointer ${isBookmarked ? "lg:w-[190px]" : "lg:w-[174px]"}`}
               onMouseEnter={() => setIsHoverBookmark(true)}
               onMouseLeave={() => setIsHoverBookmark(false)}
+              onClick={() => setIsBookmarked(!isBookmarked)}
             >
-              <div className="absolute left-0 top-0 hidden h-14 w-full items-center justify-end rounded-[33.5px] bg-[#2f2f2f] bg-opacity-5 pr-6 font-bold leading-none text-dark-gray lg:flex">
-                Bookmark
+              <div
+                className={`${isBookmarked ? "bg-dark-cyan text-dark-cyan" : "bg-[#2f2f2f] text-dark-gray"} absolute left-0 top-0 hidden h-14 w-full items-center justify-end rounded-[33.5px] bg-opacity-5 pr-6 font-bold leading-none lg:flex`}
+              >
+                {isBookmarked ? "Bookmarked" : "Bookmark"}
               </div>
               <svg width="56" height="56" xmlns="http://www.w3.org/2000/svg">
                 <g fill="none" fillRule="evenodd">
                   <circle
-                    fill={`${!isHoverBookmark ? "#2f2f2f" : "#707070"}`}
+                    fill={`${!isHoverBookmark ? (isBookmarked ? "#147A73" : "#2f2f2f") : "#707070"}`}
                     cx="28"
                     cy="28"
                     r="28"
                   />
-                  <path fill="#B1B1B1" d="M23 19v18l5-5.058L33 37V19z" />
+                  <path
+                    fill={`${isBookmarked ? "white" : "#B1B1B1"}`}
+                    d="M23 19v18l5-5.058L33 37V19z"
+                  />
                 </g>
               </svg>
             </div>
