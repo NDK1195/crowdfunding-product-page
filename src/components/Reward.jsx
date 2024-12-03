@@ -9,7 +9,7 @@ function Reward({ title, price, content, numberLeft, outOfStock = false }) {
         <h3 className="text-sm font-bold leading-none text-black lg:text-lg">
           {title}
         </h3>
-        <p className="text-sm font-medium leading-none text-dark-cyan lg:text-[15px]">
+        <p className="text-sm font-medium leading-none text-moderate-cyan lg:text-[15px]">
           Pledge ${price} or more
         </p>
       </div>

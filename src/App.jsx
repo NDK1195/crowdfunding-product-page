@@ -4,6 +4,9 @@ import logoMastercraft from "./images/logo-mastercraft.svg";
 import Button from "./components/Button";
 import { useState } from "react";
 import Reward from "./components/Reward";
+import ThankyouModal from "./components/ThankyouModal";
+import ModalOverlay from "./components/ModalOverlay";
+import Modal from "./components/Modal";
 
 function App() {
   const [isHoverBookmark, setIsHoverBookmark] = useState(false);
@@ -142,6 +145,8 @@ function App() {
         </Box>
       </section>
       {/* main */}
+      <ModalOverlay />
+      <Modal />
     </div>
   );
 }
