@@ -1,6 +1,13 @@
 import Button from "./Button";
 
-function Reward({ title, price, content, numberLeft, outOfStock = false }) {
+function Reward({
+  title,
+  price,
+  content,
+  numberLeft,
+  outOfStock = false,
+  onClick,
+}) {
   return (
     <div
       className={`${outOfStock ? "opacity-50" : ""} rounded-lg border border-[#00000026] bg-white p-6 lg:px-8 lg:pb-8 lg:pt-[38px]`}
@@ -23,7 +30,11 @@ function Reward({ title, price, content, numberLeft, outOfStock = false }) {
           </span>
           <span className="text-[15px] leading-none text-dark-gray">left</span>
         </div>
-        <Button disabled={outOfStock} className="w-full max-w-[157px]">
+        <Button
+          disabled={outOfStock}
+          className="w-full max-w-[157px]"
+          onClick={onClick}
+        >
           {outOfStock ? "Out of Stock" : "Select Reward"}
         </Button>
       </div>

@@ -2,7 +2,7 @@ import iconCheck from "../images/icon-check.svg";
 import Button from "./Button";
 function ThankyouModal({ onClick }) {
   return (
-    <div className="fixed left-1/2 top-1/2 w-full max-w-[540px] -translate-x-1/2 -translate-y-1/2 px-6 lg:px-0">
+    <div className="fixed left-1/2 top-1/2 z-20 w-full max-w-[540px] -translate-x-1/2 -translate-y-1/2 px-6 lg:px-0">
       <div className="rounded-lg border-black/5 bg-white px-6 pb-10 pt-8 text-center lg:p-12">
         <img
           src={iconCheck}

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Button from "./Button";
 
 function RewardInModal({
@@ -5,20 +6,31 @@ function RewardInModal({
   price,
   content,
   numberLeft,
-  outOfStock = false,
-  pledgeWithReward = true,
-  chosen,
+  outOfStock,
+  pledgeWithReward,
+  isChosenReward,
+  onClick,
+  onCompleted,
+  onBacked,
+  onSetNumberBacked,
 }) {
+  const [priceBacked, setPriceBacked] = useState(price);
+  function handleButtonClicked() {
+    onCompleted();
+    onBacked();
+    onSetNumberBacked(Number(priceBacked));
+  }
   return (
     <div
-      className={`${outOfStock ? "opacity-50" : ""} relative rounded-lg ${chosen ? "border-2 border-moderate-cyan" : "border border-[#00000026] bg-white"}`}
+      className={`${outOfStock ? "opacity-50" : ""} relative rounded-lg ${isChosenReward ? "border-2 border-moderate-cyan" : "border border-[#00000026] bg-white"} cursor-pointer`}
+      onClick={() => !outOfStock && onClick(title)}
     >
       <div
-        className={`${chosen ? "pb-0" : "pb-6"} px-6 pt-6 lg:px-[28px] lg:pt-8`}
+        className={`${isChosenReward ? "pb-0" : "pb-6"} px-6 pt-6 lg:px-[28px] lg:pt-8`}
       >
         <div className="mb-4 flex items-center gap-4 lg:items-end lg:gap-6">
           <div className="relative size-6 cursor-pointer rounded-full border border-black/15 transition-colors hover:border-moderate-cyan">
-            {chosen && (
+            {isChosenReward && (
               <div className="absolute left-1/2 top-1/2 size-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-moderate-cyan"></div>
             )}
           </div>
@@ -51,7 +63,7 @@ function RewardInModal({
         )}
       </div>
 
-      {chosen && (
+      {isChosenReward && pledgeWithReward && (
         <>
           <div className="my-6 h-[1px] w-full bg-black/15 lg:mb-6 lg:mt-8"></div>
           <div className="flex flex-col items-center gap-4 px-6 pb-6 lg:flex-row lg:justify-between lg:gap-0 lg:px-[28px]">
@@ -60,16 +72,36 @@ function RewardInModal({
             </h3>
             <div className="relative flex items-center gap-4">
               <input
-                type="text"
+                type="number"
                 min={price}
                 className="h-12 w-[100px] rounded-[33.5px] border border-black/15 pl-10 text-sm font-bold text-black outline-none"
+                value={priceBacked}
+                onChange={(e) => setPriceBacked(e.target.value)}
               />
               <span className="absolute left-6 top-1/2 -translate-y-1/2 text-sm font-bold text-black opacity-25">
                 $
               </span>
 
-              <Button className="w-[115px] lg:w-[107px]">Continue</Button>
+              <Button
+                className="w-[115px] lg:w-[107px]"
+                onClick={handleButtonClicked}
+              >
+                Continue
+              </Button>
             </div>
+          </div>
+        </>
+      )}
+      {isChosenReward && !pledgeWithReward && (
+        <>
+          <div className="my-6 h-[1px] w-full bg-black/15 lg:mb-6 lg:mt-8"></div>
+          <div className="mb-6 flex items-center justify-center">
+            <Button
+              className="w-[115px] lg:w-[107px]"
+              onClick={handleButtonClicked}
+            >
+              Continue
+            </Button>
           </div>
         </>
       )}
