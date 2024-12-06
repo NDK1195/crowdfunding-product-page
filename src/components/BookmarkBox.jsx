@@ -17,7 +17,7 @@ function BookmarkBox({
         alt="logo mastercraft"
         className="absolute -top-7 left-1/2 -translate-x-1/2"
       />
-      <h2 className="mb-4 mt-[52px] px-2 text-center text-xl font-bold leading-none text-black lg:mt-14 lg:px-0">
+      <h2 className="mb-4 mt-[52px] px-2 text-center text-xl font-bold leading-none text-black lg:mt-14 lg:px-0 lg:text-[28px]">
         Mastercraft Bamboo Monitor Riser
       </h2>
       <p className="mb-6 text-center text-sm leading-6 text-dark-gray lg:mb-10 lg:text-base lg:leading-none">
